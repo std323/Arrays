@@ -41,17 +41,17 @@ double Avg(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(int arr[], const int n);
 double minValueIn(double arr[], const int n);
-int minValueIn(char arr[], const int n);
+char minValueIn(char arr[], const int n);
 int minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 double minValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
-int minValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
+char minValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int maxValueIn(int arr[], const int n);
 double maxValueIn(double arr[], const int n);
-int maxValueIn(char arr[], const int n);
+char maxValueIn(char arr[], const int n);
 int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 double maxValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
-int maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
+char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n, int number_of_shifts = 0);
 void shiftRight(int arr[], const int n, int number_of_shifts = 0);
@@ -82,10 +82,8 @@ void main()
 	Print(arr, n);
 	cout << "Сумма элементов массива: " << Sum(arr, n) << endl;
 	cout << "Средне-арифметическое элементов массива: " << Avg(arr, n) << endl;
-	int min = minValueIn(arr, n);
-	cout << "Минимальное значение: " << min << endl;
-	int max = maxValueIn(arr, n);
-	cout << "Максимальное значение: " << max << endl;
+	cout << "Минимальное значение: " << minValueIn(arr, n) << endl;
+	cout << "Максимальное значение: " << maxValueIn(arr, n) << endl;
 	cout << "Введите количество сдвигов (сдвиг влево): "; cin >> number_of_shifts;
 	shiftLeft(arr, n, number_of_shifts);
 	Print(arr, n);
@@ -420,7 +418,7 @@ double minValueIn(double arr[], const int n)
 	}
 	return min;
 }
-int minValueIn(char arr[], const int n)
+char minValueIn(char arr[], const int n)
 {
 	char min = arr[0];
 	for (int i = 0; i < n; i++)
@@ -453,7 +451,7 @@ double minValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	return min;
 }
-int minValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS)
+char minValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 
 	char min = arr[0][0];
@@ -484,7 +482,7 @@ double maxValueIn(double arr[], const int n)
 	}
 	return max;
 }
-int maxValueIn(char arr[], const int n)
+char maxValueIn(char arr[], const int n)
 {
 	char max = arr[0];
 	for (int i = 0; i < n; i++)
@@ -517,7 +515,7 @@ double maxValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	return max;
 }
-int maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS)
+char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	char max = arr[0][0];
 	for (int i = 0; i < ROWS; i++)
