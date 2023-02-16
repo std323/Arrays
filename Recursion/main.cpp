@@ -3,14 +3,19 @@
 using namespace std;
 
 void elevator(int floor);
+
 int factorial(int n);
 double power(double a, int n);
+double power1(double a, int n);
 void Fibonacci(int n, int a=0, int b=1);
+void Fibonacci1(int n, int a=0, int b=1);
 
 //#define ELEVATOR
 //#define FACTORIAL
 //#define STEPEN
-#define FIBONACCI
+//#define FIBONACCI
+//#define POWER1
+//#define FIBONACCI1
 
 void main()
 {
@@ -45,6 +50,18 @@ void main()
 	Fibonacci(n);
 #endif // FIBONACCI
 
+#ifdef POWER1
+	int a, n;
+	cout << "¬ведите основание степени: "; cin >> a;
+	cout << "¬ведите показатель степени: "; cin >> n;
+	cout << power1(a, n) << endl;
+#endif POWER1
+
+#ifdef FIBONACCI1
+	int n;
+	cout << "¬ведите предельное число: "; cin >> n;
+	Fibonacci1(n);
+#endif  FIBONACCI1
 
 }
 void elevator(int floor)
@@ -61,7 +78,7 @@ void elevator(int floor)
 }
 int factorial(int n)
 {
-	return (n == 0 ? 1 : n * factorial(n - 1));
+	return n == 0 ? 1 : n * factorial(n - 1);
 }
 
 double power(double a, int n)
@@ -84,7 +101,23 @@ void Fibonacci(int n, int a, int b)
 		cout << "0";
 		return;
 	}
-	cout << a;
+	cout << a << "\t";
 	Fibonacci(n - 1, b, a + b);
 	
-	}
+}
+double power1(double a, int n)
+{
+	/*if (n == 0)return 1;
+	else if (n > 0) return a * power(a, n - 1);
+	else return 1 / a * power(a, n + 1);*/
+	//return n == 0 ? 1 : n > 0 ? a * power(a, n - 1) : 1 / a * power(a, n + 1);
+	return n == 0 ? 1 : n > 0 ? a * power(a, n - 1) : 1 / power(a, -n);//-n - мен€ем знак на противоположный
+	
+}
+void Fibonacci1(int n, int a, int b)
+{
+	if (a > n)return;
+	cout << a << "\t";
+	Fibonacci1(n, b, a + b);
+}
+

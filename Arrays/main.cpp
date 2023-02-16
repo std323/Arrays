@@ -9,11 +9,10 @@ const int COLS = 5;
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
-void FillRand(char mas[], const int INDEX);
+void FillRand(char arr[], const int INDEX);
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
 void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
 void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
 
 void Print(int arr[], const int n);
 void Print(double arr[], const int n);
@@ -24,6 +23,10 @@ void Print(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
+void Sort(char arr[], const int n); 
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
+void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS);
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
@@ -55,18 +58,15 @@ char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n, int number_of_shifts = 0);
 void shiftRight(int arr[], const int n, int number_of_shifts = 0);
-//void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
-//void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
+void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
+
 
 void shiftLeft(double arr[], const int n, int number_of_shifts = 0);
 void shiftRight(double arr[], const int n, int number_of_shifts = 0);
-//void shiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
-//void shiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
 
 void shiftLeft(char arr[], const int n, int number_of_shifts = 0);
 void shiftRight(char arr[], const int n, int number_of_shifts = 0);
-//void shiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
-//void shiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts = 0);
+
 
 
 
@@ -114,6 +114,8 @@ void main()
 	char mas[INDEX];
 	FillRand(mas, INDEX);
 	Print(mas, INDEX);
+	Sort(mas, INDEX);
+	Print(mas, INDEX);
 	cout << "Сумма элементов массива: " << Sum(mas, INDEX) << endl;
 	cout << "Средне-арифметическое элементов массива: " << Avg(mas, INDEX) << endl;
 	cout << "Минимальное значение: " << minValueIn(mas, INDEX) << endl;
@@ -129,14 +131,21 @@ void main()
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-
+	Sort(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
 	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
 	cout << "Средне-арифметическое элементов массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
 	cout << "Минимальное значение: " << minValueIn(i_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальное значение: " << maxValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "Введите количество сдвигов (сдвиг влево): "; cin >> number_of_shifts;
+	shiftLeft(i_arr_2, ROWS, COLS, number_of_shifts);
+	Print(i_arr_2, ROWS, COLS);
+	
 
 	double d_brr_2[ROWS][COLS];
 	FillRand(d_brr_2, ROWS, COLS);
+	Print(d_brr_2, ROWS, COLS);
+	Sort(d_brr_2, ROWS, COLS);
 	Print(d_brr_2, ROWS, COLS);
 	cout << "Сумма элементов массива: " << Sum(d_brr_2, ROWS, COLS) << endl;
 	cout << "Средне-арифметическое элементов массива: " << Avg(d_brr_2, ROWS, COLS) << endl;
@@ -145,6 +154,8 @@ void main()
 
 	char ch_matr_2[ROWS][COLS];
 	FillRand(ch_matr_2, ROWS, COLS);
+	Print(ch_matr_2, ROWS, COLS);
+	Sort(ch_matr_2, ROWS, COLS);
 	Print(ch_matr_2, ROWS, COLS);
 	cout << "Сумма элементов массива: " << Sum(ch_matr_2, ROWS, COLS) << endl;
 	cout << "Средне-арифметическое элементов массива: " << Avg(ch_matr_2, ROWS, COLS) << endl;
@@ -208,8 +219,8 @@ void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand() % 10000;
-			arr[i][j] /= 100;
+			arr[i][j] = rand() % 100;
+			
 		}
 	}
 }
@@ -221,7 +232,7 @@ void Print(int arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
-	cout << endl;
+	cout << "\n" << endl;
 }
 void Print(double arr[], const int n)
 {
@@ -230,7 +241,7 @@ void Print(double arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
-	cout << endl;
+	cout << "\n" << endl;
 }
 void Print(char arr[], const int n)
 {
@@ -239,7 +250,7 @@ void Print(char arr[], const int n)
 	{
 		cout << arr[i] << tab;
 	}
-	cout << endl;
+	cout << "\n" << endl;
 }
 void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
@@ -250,7 +261,7 @@ void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
 		{
 			cout << arr[i][j] << tab;
 		}
-		cout << endl;
+		cout << "\n" << endl;
 	}
 }
 void Print(double arr[ROWS][COLS], const int ROWS, const int COLS)
@@ -262,7 +273,7 @@ void Print(double arr[ROWS][COLS], const int ROWS, const int COLS)
 		{
 			cout << arr[i][j] << tab;
 		}
-		cout << endl;
+		cout << "\n" << endl;
 	}
 
 }
@@ -275,7 +286,7 @@ void Print(char arr[ROWS][COLS], const int ROWS, const int COLS)
 		{
 			cout << arr[i][j] << tab;
 		}
-		cout << endl;
+		cout << "\n" << endl;
 	}
 }
 
@@ -311,6 +322,86 @@ void Sort(double arr[], const int n)
 		}
 	}
 }
+void Sort(char arr[], const int n)
+{
+	//Сортировка массива:
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[j] < arr[i])
+			{
+				char buffer = arr[i];
+				arr[i] = arr[j];
+				arr[j] = buffer;
+			}
+		}
+	}
+}
+void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = 0; k < ROWS; k++)
+			{
+				for (int l = 0; l < COLS; l++)
+
+					if (arr[i][j] < arr[k][l])
+					{
+						int buffer = arr[k][l];
+						arr[k][l] = arr[i][j];
+						arr[i][j] = buffer;
+					}
+
+			}
+		}
+	}
+}
+void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = 0; k < ROWS; k++)
+			{
+				for (int l = 0; l < COLS; l++)
+
+					if (arr[i][j] < arr[k][l])
+					{
+						double buffer = arr[k][l];
+						arr[k][l] = arr[i][j];
+						arr[i][j] = buffer;
+					}
+
+			}
+		}
+	}
+}
+void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			for (int k = 0; k < ROWS; k++)
+			{
+				for (int l = 0; l < COLS; l++)
+
+					if (arr[i][j] < arr[k][l])
+					{
+						char buffer = arr[k][l];
+						arr[k][l] = arr[i][j];
+						arr[i][j] = buffer;
+					}
+
+			}
+		}
+	}
+}
+
 int Sum(int arr[], const int n)
 {
 	int sum = 0;
@@ -397,7 +488,7 @@ double Avg(double arr[ROWS][COLS], const int ROWS, const int COLS)
 }
 double Avg(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
-	return Sum(arr, ROWS, COLS) / (ROWS * COLS);
+	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
 }
 
 int minValueIn(int arr[], const int n)
@@ -540,8 +631,27 @@ void shiftLeft(int arr[], const int n, int number_of_shifts)
 		}
 		arr[n - 1] = buffer;
 	}
-
 }
+void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts)
+{
+	
+		for (int i = 0; i < number_of_shifts; i++)
+		{
+			int buffer = arr[0][0];
+			for (int i = 0; i < ROWS; i++)
+			{
+				for (int j = 0; j < COLS; j++)
+				{
+					arr[i][j - 1] = arr[i][j];
+					
+				}
+				
+			}
+			arr[ROWS - 1][COLS - 1] = buffer;
+		}
+	
+}
+
 void shiftRight(int arr[], const int n, int number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
@@ -552,6 +662,24 @@ void shiftRight(int arr[], const int n, int number_of_shifts)
 			arr[i + 1] = arr[i];
 		}
 		arr[0] = buffer;
+	}
+}
+void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_shifts)
+{
+	for (int i = 0; i < number_of_shifts; i++)
+	{
+		int buffer = arr[ROWS - 1][COLS-1];
+		for (int i = 0; i < ROWS; i++)
+		{
+			for (int j = 0; j < COLS; j--)
+			{
+				arr[i][j+1] = arr[i][j];
+
+			}
+
+		}
+		arr[0][0] = buffer;
+	
 	}
 }
 
