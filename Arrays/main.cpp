@@ -362,7 +362,7 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 			}
 		}
 	}
-	cout << "Массив отсортирован за " << interations << endl;
+	cout << "Массив отсортирован за " << interations << " итераций\n";
 }
 void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
 {
