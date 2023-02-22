@@ -1,4 +1,5 @@
 #include"Sort.h"
+#define CLASSIC_SORT_2D
 
 void Sort(int arr[], const int n)
 {
@@ -48,13 +49,17 @@ void Sort(char arr[], const int n)
 		}
 	}
 }
+
+#ifdef CLASSIC_SORT_2D
 void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	int interations = 0;
+	//Выбираем элемент
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
+			//Перебираем элемент
 			for (int k = i; k < ROWS; k++)
 			{
 				for (int l = k == i ? j + 1 : 0; l < COLS; l++)
@@ -74,6 +79,17 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	//cout << "Массив отсортирован за " << interations << " итераций\n";
 }
+#endif // CLASSIC_SORT_2D
+
+/*void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
+for (int i = 0; i < ROWS * COLS; i++)
+{
+for (int j=i+1; j< ROWS*COLS; j++)
+
+}*/
+
+
+
 void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	int interations = 0;
