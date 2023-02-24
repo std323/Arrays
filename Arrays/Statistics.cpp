@@ -1,4 +1,5 @@
-#include"Statistics.h"
+﻿#include"Statistics.h"
+
 
 template<typename T>T Sum(T arr[], const int n)
 {
@@ -9,7 +10,9 @@ template<typename T>T Sum(T arr[], const int n)
 	}
 	return sum;
 }
-
+//Эта функция закомментирована, чтобы не выносить ее в отдельный файл,
+//поскольку реализации НЕШАБЛОННЫХ ФУНКЦИЙ НИ ВКОЕМ СЛУЧАЕ НЕ ПОДКЛЮЧАЮТСЯ НА МЕСТО ВЫЗОВА ЭТИХ ФУНКЦИЙ:
+#ifdef OVERLOAD_STATISTICS_FOR_CHAR
 int Sum(char arr[], const int n)
 {
 	char sum = 0;
@@ -19,6 +22,8 @@ int Sum(char arr[], const int n)
 	}
 	return sum;
 }
+#endif // OVERLOAD_STATISTICS_FOR_CHAR
+
 
 template<typename T>T Sum(T arr[ROWS][COLS], const int ROWS, const int COLS)
 {
@@ -33,6 +38,9 @@ template<typename T>T Sum(T arr[ROWS][COLS], const int ROWS, const int COLS)
 	return sum;
 }
 
+//Эта функция закомментирована, чтобы не выносить ее в отдельный файл,
+//поскольку реализации НЕШАБЛОННЫХ ФУНКЦИЙ НИ ВКОЕМ СЛУЧАЕ НЕ ПОДКЛЮЧАЮТСЯ НА МЕСТО ВЫЗОВА ЭТИХ ФУНКЦИЙ:
+#ifdef OVERLOAD_STATISTICS_FOR_CHAR
 int Sum(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	char sum = 0;
@@ -45,6 +53,8 @@ int Sum(char arr[ROWS][COLS], const int ROWS, const int COLS)
 	}
 	return sum;
 }
+#endif // OVERLOAD_STATISTICS_FOR_CHAR
+
 
 
 template<typename T>double Avg(T arr[], const int n)
@@ -52,20 +62,26 @@ template<typename T>double Avg(T arr[], const int n)
 	return (double)Sum(arr, n) / n;
 }
 
+#ifdef OVERLOAD_STATISTICS_FOR_CHAR
 const char* Avg(char arr[], const int n)
 {
 	return "No AVG for char";
 }
+#endif // OVERLOAD_STATISTICS_FOR_CHAR
+
 
 template<typename T>double Avg(T arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	return Sum(arr, ROWS, COLS) / (ROWS * COLS);
 }
 
+#ifdef OVERLOAD_STATISTICS_FOR_CHAR
 const char* Avg(char arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	return "No AVG for char";
 }
+#endif // OVERLOAD_STATISTICS_FOR_CHAR
+
 
 template<typename T>T minValueIn(T arr[], const int n)
 {
