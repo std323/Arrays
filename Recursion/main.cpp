@@ -10,6 +10,7 @@ double power1(double a, int n);
 void Fibonacci(int n, int a=0, int b=1);
 void Fibonacci1(int n, int a=0, int b=1);
 
+
 //#define ELEVATOR
 //#define FACTORIAL
 //#define STEPEN
